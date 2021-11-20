@@ -4,9 +4,11 @@ Introduction
 ------------
 This repo contains 2 standalone experimental spring-boot projects.
 
-ptoject1#: challenge 
+project-1#: challenge
+--------------------
 Its basically a producer which reads data from a csv file as source and publishes to a specific kafka topic.
-project2#: kafka-dsl-app
+project-2#: kafka-dsl-app
+-------------------------
 Its a kafka stream based consumer that listens to and process the data from the same kafka topic.
 
 Requirements
