@@ -1,0 +1,57 @@
+Prerequisites:
+=============
+docker/docker-compose and Java-11 (or higher) must be there in the system (of course with internet connection).
+
+Steps to Test:
+==============
+
+Step-1: Download at least the following 3 files from github repo:
+-----------------------------------------------------------------
+a) docker-compose.yml           (https://github.com/Purusottam/rakuten-challenge-test/tree/master/zookeeper-kafka-environment)
+b) challenge-0.0.1-SNAPSHOT.jar
+c) KafkaDSL-0.0.1-SNAPSHOT.jar
+
+Step-2: Setup the zookeeper/kafka environment
+----------------------------------------------
+
+a) Open a terminal/cmd window from the directory where docker-compose.yml file is kept.
+b) Run below command:
+   docker-compose up -d
+ 
+Note: i) Before going to next step, verify that 2 containers: zookeeper and kafka are up and running through 'docker ps' command.
+     ii) With this step along with zookeeper/kafka, a topic, 'gpx-topic' specified in the docker-compose file gets created. 
+ 
+Step-3: Run the kafka-dsl/consumer app
+--------------------------------------
+a) Open a separate terminal/cmd window from the directory where KafkaDSL-0.0.1-SNAPSHOT.jar is kept.
+b) Run below command:
+   java -jar KafkaDSL-0.0.1-SNAPSHOT.jar
+ 
+Note: i) Don't close this terminal/cmd window till the end.
+     ii) With this step, a kafka stream listener gets ready to listen to 'gpx-topic'.
+ 
+Step-4: Run the csv-reader/producer app
+----------------------------------------
+a) Open another terminal/cmd window from the directory where challenge-0.0.1-SNAPSHOT.jar is kept.
+b) Run below command:
+   java -jar challenge-0.0.1-SNAPSHOT.jar
+ 
+Note: i) Don't close this terminal/cmd window till it reads the last line of the csv file.
+     ii) With this step, it starts reading the csv file kept inside the classpath resources of the application.
+ 
+Step-5: Verify the console log of the terminal/cmd window opened at Step-3
+--------------------------------------------------------------------------
+Every time a line is read from the csv file, published and processed by the kafka stream consumer, 
+following typical log gets appear in the console:
+
+---------------------------------------------------------------------------------------------------------------------------------------
+ ## Location reached: Location[latitude:50.71638269, longitude:6.446012612] at time 2021-11-20T22:39:53
+ ## Distance from previous location: 0.0030480794360498776 km
+ ## Distance covered so far: 10.877843396698243 km at time: 2021-11-20T22:39:53
+---------------------------------------------------------------------------------------------------------------------------------------
+
+P.S:
+=== 
+Initially planned to prepare a consolidated docker-compose file to wrap all the 4 parts (zookeeper, kafka, csv-kafka-producer, kafka-dsl-consumer)
+as containerised services and run/test them through one-shot docker-compose command. But facing some issues in connecting to the kafka-broker from docker.
+I will do that and share later if possible.
