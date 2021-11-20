@@ -23,6 +23,10 @@ Tools/software/api used
 Zookeeper/Kafka (A docker-compose file, see inside /zookeeper-kafka-environment can be used to build up this).
 Java 11, Spring-Boot with dependencies like spring-kafka, spring-cloud-stream, kafka-streams, lombok, opencsv, jackson-data-bind apis etc.
 
+How to do a quick run & test
+----------------------------
+Please refer steps-to-test.txt file.
+
 How it works
 ------------
 - The zookeeper/kafka environment is set through docker images, defined in the docker-compose.yml file. The command, 'docker-compose up' starts and attaches to containers
@@ -33,3 +37,5 @@ How it works
 - Similarly, the consumer app ((project-#2)), refers its application.yml file to get the required configuration details about the spring-cloud-stream like binding destination topic etc.
 - The consumer app internally uses apache kafka-streams api to receive data from the destination topic. After receiving each data from the topic, it calculates the distance
    using Haversine formula and displays that to the console along with time.
+   
+
