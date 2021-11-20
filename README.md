@@ -2,7 +2,7 @@
 
 Introduction
 ------------
-This repo contains 2 standalone spring-boot based projects. One reads location data for a csv file, publishes to a kafka topic at certain intervals. Other one consumes the data, proceeses it and displayes the distance along with time.
+This repo contains 2 standalone spring-boot based projects. One reads location data from a csv file, publishes to a kafka topic at certain intervals. The other one consumes the data, proceeses it and displayes the loction distance information along with time.
 
 project-#1: challenge
 --------------------
