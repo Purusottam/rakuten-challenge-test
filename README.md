@@ -25,7 +25,7 @@ Spring-Boot with dependencies like spring-kafka, spring-cloud-stream, kafka-stre
 
 How it works
 ------------
-#  a)    The zookeeper/kafka environment is set through docker images, defined in the docker-compose.yml file. The command, 'docker-compose up' starts and attaches to containers
+- The zookeeper/kafka environment is set through docker images, defined in the docker-compose.yml file. The command, 'docker-compose up' starts and attaches to containers
    for zookeeper and kafka services against some specified port numbers. This also creates a topic, gpx-topic (specified in docker-compose file) in kafka.
 *b) The producer spring-boot app (challenge), refers to its application.yml file to get the required configuration details about kafka like bootstrap-servers, key-serializer,          value-serializer and default-topic etc.
 *c) The producer app intenally uses opencsv api to read the supplied csv file, kept inside its classpath resource. It publishes the csv data line by line to the gpx-topic using 
