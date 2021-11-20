@@ -1,0 +1,14 @@
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: ccom.purusottam.kafka.challenge.model.TimedLocation
+    template:
+      default-topic: gpx-topic

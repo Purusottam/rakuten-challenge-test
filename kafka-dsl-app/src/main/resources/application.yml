@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    stream:
+      function:
+        definition: locationProcessor
+      bindings:
+        locationProcessor-in-0:
+          destination: gpx-topic
+
