@@ -20,5 +20,5 @@ Then prepare a separte app which will consume the data from  the messaging servi
 
 Tools/software/api used
 -----------------------
-Zookeeper/Kafka (A docker-compose file can be used to build up this).
+Zookeeper/Kafka (A docker-compose file (see inside /zookeeper-kafka-environment) can be used to build up this).
 Spring-Boot with dependencies like spring-kafka, spring-cloud-stream, kafka-streams, lombok, opencsv, jackson data bind apis etc.
